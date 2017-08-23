@@ -1,0 +1,50 @@
+/*
+.warning {
+  height: 100px;
+  width: 250px;
+  border: 3px solid black;
+}
+
+.row board {
+  display: inline;
+  height: 100px;
+  width: 100px;
+}*/
+
+
+.width-container {
+  height: 100px
+
+}
+.chip-container {
+
+}
+
+.col-sm-2{
+  height: 200px;
+  border: 1px solid red;
+  background-color: yellow;
+  height: 1000px;
+  padding: 0;
+}
+
+.circle{
+  width: 80%;
+  height: 140px;
+  margin: 5%;
+  margin-left: 17px;
+  margin-top: 13px;
+  border-radius: 100%;
+  background-color: black;
+}
+.square{
+  height: 16.66%;
+  border: 2px solid black;
+  width: 100%;
+
+}
+
+.col-sm-4{
+  height: 100px;
+  border: 1px solid blue;
+}
