@@ -86,10 +86,10 @@ else if(document.querySelector(".circle-0-a").hasAttribute("style", color))
 }
 else
 {
-  // squares[5][0] = color;
+  squares[5][0] = color;
   document.querySelector(".circle-0-a").setAttribute("style", color)
 }
-
+check();
 });
 
 document.querySelector(".column-1").addEventListener("click", function(){
@@ -131,6 +131,7 @@ else
   document.querySelector(".circle-1-a").setAttribute("style", color)
   squares[5][1] = color;
 }
+check();
 });
 
 
@@ -143,9 +144,6 @@ document.querySelector(".column-2").addEventListener("click", function(){
   else{
      color = "background-color: green;"
   }
-
-
-
   if(document.querySelector(".circle-2-e").hasAttribute("style", color)){
     squares[0][2] = color;
   document.querySelector(".circle-2-f").setAttribute("style", color)
@@ -173,7 +171,9 @@ else if(document.querySelector(".circle-2-a").hasAttribute("style", color))
 else
 {
   document.querySelector(".circle-2-a").setAttribute("style", color)
+  squares[5][2] = color;
 }
+check();
 });
 
 
@@ -215,8 +215,12 @@ else if(document.querySelector(".circle-3-a").hasAttribute("style", color))
 else
 {
   document.querySelector(".circle-3-a").setAttribute("style", color)
+  squares[5][3] = color;
 }
+check();
 });
+
+
 
 
 document.querySelector(".column-4").addEventListener("click", function(){
@@ -228,36 +232,39 @@ document.querySelector(".column-4").addEventListener("click", function(){
   else{
      color = "background-color: green;"
   }
-
   if(document.querySelector(".circle-4-e").hasAttribute("style", color)){
     squares[0][4] = color;
   document.querySelector(".circle-4-f").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-4-d").hasAttribute("style", color))
 {
-    squares[1][4] = color;
+  squares[1][4] = color;
   document.querySelector(".circle-4-e").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-4-c").hasAttribute("style", color))
 {
-    squares[2][4] = color;
+  squares[2][4] = color;
   document.querySelector(".circle-4-d").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-4-b").hasAttribute("style", color))
 {
-    squares[3][4] = color;
+  squares[3][4] = color;
   document.querySelector(".circle-4-c").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-4-a").hasAttribute("style", color))
 {
-    squares[4][4] = color;
+  squares[4][4] = color;
   document.querySelector(".circle-4-b").setAttribute("style", color)
 }
 else
 {
   document.querySelector(".circle-4-a").setAttribute("style", color)
+  squares[5][4] = color;
 }
+check();
 });
+
+
 
 
 document.querySelector(".column-5").addEventListener("click", function(){
@@ -269,37 +276,164 @@ document.querySelector(".column-5").addEventListener("click", function(){
   else{
      color = "background-color: green;"
   }
-
-
   if(document.querySelector(".circle-5-e").hasAttribute("style", color)){
-      squares[0][5] = color;
+    squares[0][5] = color;
   document.querySelector(".circle-5-f").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-5-d").hasAttribute("style", color))
 {
-      squares[1][5] = color;
+  squares[1][5] = color;
   document.querySelector(".circle-5-e").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-5-c").hasAttribute("style", color))
 {
-      squares[2][5] = color;
+  squares[2][5] = color;
   document.querySelector(".circle-5-d").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-5-b").hasAttribute("style", color))
 {
-      squares[3][5] = color;
+  squares[3][5] = color;
   document.querySelector(".circle-5-c").setAttribute("style", color)
 }
 else if(document.querySelector(".circle-5-a").hasAttribute("style", color))
 {
-      squares[4][5] = color;
+  squares[4][5] = color;
   document.querySelector(".circle-5-b").setAttribute("style", color)
 }
 else
 {
   document.querySelector(".circle-5-a").setAttribute("style", color)
+  squares[5][5] = color;
 }
+
+check();
 });
+
+
+
+
+
+function check(){
+for(var i = 0; i < squares.length; i++){
+  for(var j = 0; j<squares.length; j++){
+    if(squares[i][j] === 0) {
+
+    }
+    else if (squares[i][j] === squares[i][j+1] && squares[i][j] === squares[i][j+2]) {
+        console.log('horizontal connect 3 AT (' + i + ', ' + j + ')');
+        alert("You win!1");
+    }
+    else if (squares[i+1] === undefined || squares[i+2] === undefined) {
+      continue;
+    }
+    else if (squares[i][j] === squares[i+1][j] && squares[i][j] === squares[i+2][j]) {
+        console.log('vertical connect 3 AT (' + i + ', ' + i + ')');
+        alert("You win!3");
+    }
+    else if (squares[i][j] === squares[i+1][j-1] && squares[i][j] === squares[i+2][j-2]) {
+        console.log('diagonal left connect 3 AT (' + i + ', ' + j + ')');
+        alert("You win!4");
+    }
+
+    else if (squares[i][j] === squares[i+1][j+1] && squares[i][j] === squares[i+2][j+2]) {
+        console.log('diagonal right connect 3 AT (' + i + ', ' + j + ')');
+        alert("You win!5");
+    }
+    else {
+      console.log("hello")
+      document.querySelector(".winner").setAttribute("style", "display: none")
+    }
+  }
+}
+}
+
+
+
+
+// document.querySelector(".column-4").addEventListener("click", function(){
+//   counter++;
+//
+//   if(counter === 0 || counter % 4 === 0){
+//      color = "background-color: red;"
+//   }
+//   else{
+//      color = "background-color: green;"
+//   }
+//
+//   if(document.querySelector(".circle-4-e").hasAttribute("style", color)){
+//     squares[0][4] = color;
+//   document.querySelector(".circle-4-f").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-4-d").hasAttribute("style", color))
+// {
+//     squares[1][4] = color;
+//   document.querySelector(".circle-4-e").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-4-c").hasAttribute("style", color))
+// {
+//     squares[2][4] = color;
+//   document.querySelector(".circle-4-d").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-4-b").hasAttribute("style", color))
+// {
+//     squares[3][4] = color;
+//   document.querySelector(".circle-4-c").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-4-a").hasAttribute("style", color))
+// {
+//     squares[4][4] = color;
+//   document.querySelector(".circle-4-b").setAttribute("style", color)
+// }
+// else
+// squares[5][4] = color;
+// {
+//   document.querySelector(".circle-4-a").setAttribute("style", color)
+// }
+// });
+
+
+// document.querySelector(".column-5").addEventListener("click", function(){
+//   counter++;
+//
+//   if(counter === 0 || counter % 2 === 0){
+//      color = "background-color: red;"
+//   }
+//   else{
+//      color = "background-color: green;"
+//   }
+
+
+//   if(document.querySelector(".circle-5-e").hasAttribute("style", color)){
+//       squares[0][5] = color;
+//   document.querySelector(".circle-5-f").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-5-d").hasAttribute("style", color))
+// {
+//       squares[1][5] = color;
+//   document.querySelector(".circle-5-e").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-5-c").hasAttribute("style", color))
+// {
+//       squares[2][5] = color;
+//   document.querySelector(".circle-5-d").setAttribute("style", color)
+// }
+// else if(document.querySelector(".circle-5-b").hasAttribute("style", color))
+// {
+//       squares[3][5] = color;
+//   document.querySelector(".circle-5-c").setAttribute("style", color)
+// }
+//     squares[4][5] = color;
+// else if(document.querySelector(".circle-5-a").hasAttribute("style", color))
+//
+// {
+//       squares[5][5] = color;
+//   document.querySelector(".circle-5-b").setAttribute("style", color)
+// }
+// else
+// {
+//   document.querySelector(".circle-5-a").setAttribute("style", color)
+// }
+// });
 
 
 // console.log (arr [i][j]);
